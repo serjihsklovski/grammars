@@ -1,4 +1,5 @@
 from xml.etree import ElementTree
+from grammar.grammar import Grammar
 
 
 def from_xml(xml_path):
@@ -64,11 +65,13 @@ def from_xml(xml_path):
         if parse_action is not None:
             parse_action(child)
 
-    print(terminals)
-    print(non_terminals)
-    print(starting_non_terminal)
-    print(transitions)
-    print(restrictions)
+    return Grammar(
+        terminals=terminals,
+        non_terminals=non_terminals,
+        starting_non_terminal=starting_non_terminal,
+        transitions=transitions,
+        restrictions=restrictions
+    )
 
 
 def save_words(gram, output_path):
