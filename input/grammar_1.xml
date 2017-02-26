@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar name="test_grammar">
+  <terminals>
+    <terminal value="a" />
+    <terminal value="b" />
+  </terminals>
+
+  <non-terminals>
+    <non-terminal value="S" starting="true" />
+    <non-terminal value="A" />
+    <non-terminal value="B" />
+  </non-terminals>
+
+  <transitions>
+    <transition from="S" to="AB" />
+    <transition from="A" to="" />
+    <transition from="A" to="aAa" />
+    <transition from="A" to="bAb" />
+    <transition from="B" to="" />
+    <transition from="B" to="aBa"/>
+    <transition from="B" to="bBb" />
+  </transitions>
+
+  <restrictions>
+    <max-word-length value="10" />
+  </restrictions>
+</grammar>
