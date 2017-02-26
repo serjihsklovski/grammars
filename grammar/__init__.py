@@ -16,6 +16,7 @@ def from_xml(xml_path) -> Grammar:
     starting_non_terminal = None
     transitions = {}
     restrictions = {}
+    grammar_name = None
 
     restrictions_names = {'max-word-length'}
 
@@ -65,12 +66,18 @@ def from_xml(xml_path) -> Grammar:
         if parse_action is not None:
             parse_action(child)
 
+    if 'name' in root.attrib and root.attrib['name'] != '':
+        grammar_name = root.attrib['name']
+    else:
+        grammar_name = 'unknown'
+
     return Grammar(
         terminals=terminals,
         non_terminals=non_terminals,
         starting_non_terminal=starting_non_terminal,
         transitions=transitions,
-        restrictions=restrictions
+        restrictions=restrictions,
+        name=grammar_name
     )
 
 
