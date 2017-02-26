@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<grammar name="test_grammar">
+<grammar name="Grammar #1">
   <terminals>
     <terminal value="a" />
     <terminal value="b" />
