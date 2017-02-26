@@ -82,4 +82,9 @@ def from_xml(xml_path) -> Grammar:
 
 
 def save_words(gram, output_path):
-    pass
+    with open(output_path, 'w') as output:
+        print('Words in {grammar_name}:\n'
+              .format(grammar_name=repr(gram.get_name())), file=output)
+
+        for word in gram.generate_words():
+            print(word, file=output)
