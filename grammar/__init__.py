@@ -2,7 +2,7 @@ from xml.etree import ElementTree
 from grammar.grammar import Grammar
 
 
-def from_xml(xml_path):
+def from_xml(xml_path) -> Grammar:
     """
     Parses xml file describing the language grammar.
     Creates a Grammar object and returns it.
