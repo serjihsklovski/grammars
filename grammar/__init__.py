@@ -16,7 +16,6 @@ def from_xml(xml_path) -> Grammar:
     starting_non_terminal = None
     transitions = {}
     restrictions = {}
-    grammar_name = None
 
     restrictions_names = {'max-word-length'}
 
@@ -81,10 +80,21 @@ def from_xml(xml_path) -> Grammar:
     )
 
 
-def save_words(gram, output_path):
-    with open(output_path, 'w') as output:
-        print('Words in {grammar_name}:\n'
-              .format(grammar_name=repr(gram.get_name())), file=output)
+def save_words(gram: Grammar, output_path: str):
+    """
+    Writes all words of a language, described by the grammar `gram`.
 
-        for word in gram.generate_words():
-            print(word, file=output)
+    :param gram: the grammar of a language
+    :param output_path: path to the output file
+    """
+
+    words = gram.generate_words()
+
+    with open(output_path, 'w') as output:
+        print('Words in language of {grammar_name}'
+              .format(grammar_name=repr(gram.get_name())), file=output)
+        print('It has {words_count} words:\n'.format(words_count=len(words)),
+              file=output)
+
+        for word in sorted(words):
+            print(word if word != '' else '#eps', file=output)
