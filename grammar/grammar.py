@@ -78,8 +78,8 @@ class Grammar:
                             self._transitions[first_non_terminal]):
                         _reduce(seq.replace(first_non_terminal, transition))
 
-        for entry_transition in list(sorted(
-                self._transitions[self._starting_non_terminal])):
+        for entry_transition in sorted(self._transitions[
+                                           self._starting_non_terminal]):
             _reduce(entry_transition)
 
         return words
